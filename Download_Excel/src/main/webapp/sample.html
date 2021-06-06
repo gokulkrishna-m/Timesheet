@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <title>Welcome</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src='js/jquery-ui.js'></script>
+	  <script type="text/javascript" src='js/jquery-ui.min.js'></script>
+	  <link rel="stylesheet" href="css/bootstrap.min.css">
+	  <link rel="stylesheet" href="css/jquery-ui.css">
+	  <link rel="stylesheet" href="css/jquery-ui.min.css">
+	  <link rel="stylesheet" href="css/jquery-ui.structure.css">
+	  <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
+	  <link rel="stylesheet" href="css/jquery-ui.theme.css">
+	  <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+	  <script type="text/javascript" src='js/moment.js'></script>
+	  <script type="text/javascript" src='js/moment.min.js'></script>
+	  <script type="text/javascript" src='js/sample.js'></script>
+	  <link rel="shortcut icon" href="js/favicon.ico" type="image/x-icon">
+	</head>
+	<script type="text/javascript">
+		$(function(){
+			$("#projectname").focus();
+			$("#startdate").datepicker({
+				changeMonth:true,
+				changeYear:true,
+				dateFormat:"dd/mm/yy",
+				endDate: "today",
+	            maxDate: "today"
+			});
+			$("#enddate").datepicker({
+				changeMonth:true,
+				changeYear:true,
+				dateFormat:"dd/mm/yy",
+				endDate: "today",
+	            maxDate: "today"
+			});
+			$("#getdate").datepicker({
+				changeMonth:true,
+				changeYear:true,
+				dateFormat:"dd/mm/yy",
+				endDate: "today",
+	            maxDate: "today",
+	            changeMonth: false,
+	            changeYear: false,
+				//dateFormat: 'yy-mm-dd'
+			});
+			$('#getdate').change(function() { 
+				console.log("input's current value: " + this.value);
+			});
+		})
+	</script>
+	<body>
+		<div class="container">
+			<br>
+			<h2 style='text-align:center;'>Hello Hari Krishnan</h2>
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="work_data" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><b style="color: #669999">Home</b></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="excel_data" data-toggle="tab" href="#menu1" role="tab" aria-controls="menu1" aria-selected="false"><b style="color: #669999">Excel Data</b></a>
+				</li>
+			</ul>
+	
+			<div class="tab-content" id="myTabContent">
+				<!-- first tab -->
+				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="work_data">
+					<form>
+						<div class="form-group">
+							<label for="projectname" style="color: #ff9900;">Project Name</label>
+							<input type="text" class="form-control" id="projectname" placeholder="Enter Project Name" autocomplete="off">
+							<div class="error-projectname"></div>
+						</div>
+						<div class="form-group">
+							<label for="description" style="color: #ff9900;">Project Description</label>
+							<input type="text" class="form-control" id="description" placeholder="Enter Description" autocomplete="off">
+							<div class="error-description"></div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-3">
+									<label for="getdate" style="color: #ff9900;">Hours</label>
+									<select name="hours" id="hours" class="form-control">
+										<option value="">Please select hours</option>
+										<option value="2">2</option>
+										<option value="4">4</option>
+										<option value="6">6</option>
+										<option value="8">8</option>
+										<option value="10">10</option>
+										<option value="12">12</option>
+									</select>
+									<div class="error-hour"></div>
+								</div>
+								<div class="col-sm-3">
+									<label for="getdate" style="color: #ff9900;">Date</label>
+									<div class="input-group date" data-provide="datepicker" >
+									<input type="text" class="form-control" name="getdate" id="getdate" placeholder="Select date if required" autocomplete="off">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="success-message"></div>
+						<div class="row">
+							<div class="col-sm-6" align="center">
+								<button type="button" class="btn btn-outline-primary" id="button">Submit</button>
+							</div>
+							<div class="col-sm-6" align="center">
+								<button type="button" class="btn btn-outline-secondary" id="reset">Reset</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- first tab ends here -->
+				<!-- second tab -->
+				<div class="tab-pane fade" id="menu1" role="tabpanel" aria-labelledby="excel_data">
+					<br>
+					<form action ="excelreport.jsp" method="post" role="form" id="exceldata" class="form-horizontal" autocomplete="off">
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="startdate" style="color: #ff9900;">Start Date</label>
+								<div class="input-group date" data-provide="datepicker" >
+								<input type="text" class="form-control" name="startingdate" id="startdate" placeholder="Select start date" autocomplete="off">
+								</div>
+								<div class="error-startdate"></div>
+							</div>
+							<div class="col-sm-6">
+								<label for="enddate" style="color: #ff9900;">End Date</label>
+								<div class="input-group date" data-provide="datepicker" >
+								<input type="text" class="form-control" name="endingdate" id="enddate" placeholder="Select end date" autocomplete="off">
+								</div>
+								<div class="error-enddate"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<!-- <label for="gokullabel" style="color: #ff9900;">Project Gokul</label> -->
+								<input type="hidden" class="form-control" id="startvalue" name="stvalue" value="" placeholder="Enter Project Gokul" autocomplete="off">
+							</div>
+							<div class="col-sm-6">
+								<!-- <label for="krishnalabel" style="color: #ff9900;">Project Krishna</label> -->
+								<input type="hidden" class="form-control" id="endvalue" name="edvalue" value="" placeholder="Enter Project Krishna" autocomplete="off">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12" align="center">
+								<div class="error-nodate"></div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-6" align="center">
+								<button type="submit" class="btn btn-outline-primary" id="download">Download</button>
+							</div>
+							<div class="col-sm-6" align="center">
+								<button type="button" class="btn btn-outline-secondary" id="datereset">Reset</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- second tab ends here -->
+			</div>
+		</div>
+	</body>
+</html>
